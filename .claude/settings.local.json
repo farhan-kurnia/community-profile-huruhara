@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\wamp64\\\\www\\\\community-profile-huruhara\\\\resources\\\\views\\\\partials\")",
+      "Bash(php artisan *)"
+    ]
+  }
+}
