@@ -30,6 +30,7 @@
     <meta name="twitter:image" content="https://huruhararunning.com/images/og-image.jpg">
 
     {{-- JSON-LD Structured Data --}}
+    @verbatim
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -49,6 +50,7 @@
         ]
     }
     </script>
+    @endverbatim
 
     {{-- Favicon --}}
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
