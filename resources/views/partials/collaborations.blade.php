@@ -19,20 +19,20 @@
             </h2>
         </div>
 
-        {{-- Brand logos: 4 columns x 2 rows --}}
-        <div class="grid grid-cols-4 gap-0 mb-24 border border-gray-100 divide-x divide-y divide-gray-100">
+        {{-- Brand logos: 4 x 2 --}}
+        <div class="grid grid-cols-4 border border-gray-100 divide-x divide-y divide-gray-100 mb-24">
             @foreach($brands as $index => $brand)
             <div
-                class="group flex items-center justify-center px-10 py-10"
                 x-data="{ visible: false }"
                 x-intersect.once="visible = true"
-                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
-                :style="'transition: opacity 0.5s ease, transform 0.5s ease; transition-delay: ' + ({{ $index }} * 80) + 'ms'"
+                :class="visible ? 'opacity-100' : 'opacity-0'"
+                :style="'transition: opacity 0.6s ease; transition-delay: ' + ({{ $index }} * 150) + 'ms'"
+                class="flex items-center justify-center px-10 py-10"
             >
                 <img
                     src="{{ asset('images/collaborations/' . $brand['logo']) }}"
                     alt="{{ $brand['name'] }}"
-                    class="h-12 lg:h-14 w-full object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    class="h-12 lg:h-14 w-full object-contain grayscale opacity-50"
                     onerror="this.parentElement.innerHTML = '<span class=\'text-gray-300 font-semibold text-xs tracking-widest uppercase text-center block\'>' + '{{ $brand['name'] }}' + '</span>'"
                 >
             </div>
