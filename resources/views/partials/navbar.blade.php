@@ -11,8 +11,8 @@
         };
         window.addEventListener('scroll', update, { passive: true });
     "
-    :class="(scrolled && !darkSection) ? 'bg-white shadow-sm' : 'bg-transparent'"
-    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    :class="darkSection ? '-translate-y-full' : ((scrolled && !darkSection) ? 'bg-white shadow-sm translate-y-0' : 'bg-transparent translate-y-0')"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
 >
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-20">
