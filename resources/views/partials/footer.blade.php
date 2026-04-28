@@ -24,7 +24,7 @@
             <div>
                 <p class="text-white/30 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Navigation</p>
                 <div class="grid grid-cols-2 gap-x-12 gap-y-3">
-                    @foreach(['About' => '#about', 'Gallery' => '#gallery', 'Videos' => '#video', 'Collabs' => '#collaborations', 'Partnership' => '#partnership'] as $label => $href)
+                    @foreach(['About' => '#about', 'Gallery' => '#gallery', 'Videos' => '#video', 'Collabs' => '#collaborations', 'Our Product' => '#products', 'Partnership' => '#partnership'] as $label => $href)
                     <a href="{{ $href }}" class="text-white/50 text-sm hover:text-white transition-colors duration-200">
                         {{ $label }}
                     </a>
