@@ -20,21 +20,33 @@
         </div>
 
         {{-- Brand logos --}}
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12 mb-24">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8 mb-24">
             @foreach($brands as $index => $brand)
             <div
-                class="group"
-                x-data="{ visible: false }"
+                x-data="{ visible: false, hovered: false }"
                 x-intersect.once="visible = true"
-                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+                @mouseenter="hovered = true"
+                @mouseleave="hovered = false"
+                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
                 :style="'transition: opacity 0.5s ease, transform 0.5s ease; transition-delay: ' + ({{ $index }} * 80) + 'ms'"
+                class="relative flex items-center justify-center"
             >
-                <img
-                    src="{{ asset('images/collaborations/' . $brand['logo']) }}"
-                    alt="{{ $brand['name'] }}"
-                    class="h-16 lg:h-20 w-full object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                    onerror="this.parentElement.innerHTML = '<span class=\'text-gray-300 font-semibold text-sm tracking-widest uppercase\'>' + '{{ $brand['name'] }}' + '</span>'"
-                >
+                {{-- Hover background ring --}}
+                <div
+                    :class="hovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'"
+                    class="absolute inset-0 rounded-2xl bg-gray-50 border border-gray-200 transition-all duration-300 ease-out"
+                ></div>
+
+                {{-- Logo image --}}
+                <div class="relative z-10 w-full px-6 py-8">
+                    <img
+                        src="{{ asset('images/collaborations/' . $brand['logo']) }}"
+                        alt="{{ $brand['name'] }}"
+                        :class="hovered ? 'grayscale-0 opacity-100 scale-110' : 'grayscale opacity-40 scale-100'"
+                        class="h-14 lg:h-18 w-full object-contain transition-all duration-400 ease-out"
+                        onerror="this.parentElement.innerHTML = '<span class=\'text-gray-300 font-semibold text-sm tracking-widest uppercase text-center block\'>' + '{{ $brand['name'] }}' + '</span>'"
+                    >
+                </div>
             </div>
             @endforeach
         </div>
