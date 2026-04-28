@@ -1,14 +1,18 @@
 <x-mail::message>
 # New Partnership Enquiry
 
-You have received a new partnership request from **{{ $data['company'] }}**.
+You have received a new partnership request.
 
 ---
 
 **Name:** {{ $data['name'] }}
+
 **Company / Brand:** {{ $data['company'] }}
+
 **Email:** {{ $data['email'] }}
+
 **WhatsApp:** {{ $data['phone'] ?? '—' }}
+
 **Budget Range:** {{ $data['budget_range'] ?? '—' }}
 
 ---
