@@ -3,13 +3,52 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Huruhara — Indonesia's running community. Building connections, pushing limits, and celebrating every step together.">
-    <meta property="og:title" content="Huruhara Running Community">
-    <meta property="og:description" content="Indonesia's running community. Moving together, growing together.">
-    <meta property="og:image" content="{{ asset('images/og-image.jpg') }}">
+
+    {{-- Primary SEO --}}
+    <title>Huruhara Running Community — Komunitas Lari Indonesia</title>
+    <meta name="description" content="Huruhara adalah komunitas lari Indonesia yang aktif. Bergabung bersama Huruhara Run, komunitas pelari yang bergerak, bertumbuh, dan menginspirasi bersama.">
+    <meta name="keywords" content="huruhara, huruhara run, huruhara running, huruhara running community, huru hara, komunitas lari, komunitas lari Indonesia, running community Indonesia">
+    <meta name="author" content="Huruhara Running Community">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://huruhararunning.com">
+
+    {{-- Open Graph (WhatsApp, IG, Facebook) --}}
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://huruhararunning.com">
+    <meta property="og:site_name" content="Huruhara Running Community">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:title" content="Huruhara Running Community — Komunitas Lari Indonesia">
+    <meta property="og:description" content="Huruhara adalah komunitas lari Indonesia yang aktif. Bergerak bersama, bertumbuh bersama.">
+    <meta property="og:image" content="https://huruhararunning.com/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary_large_image">
-    <title>Huruhara Running Community</title>
+    <meta name="twitter:title" content="Huruhara Running Community — Komunitas Lari Indonesia">
+    <meta name="twitter:description" content="Huruhara adalah komunitas lari Indonesia yang aktif. Bergerak bersama, bertumbuh bersama.">
+    <meta name="twitter:image" content="https://huruhararunning.com/images/og-image.jpg">
+
+    {{-- JSON-LD Structured Data --}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SportsOrganization",
+        "name": "Huruhara Running Community",
+        "alternateName": ["Huruhara Run", "Huruhara", "Huru Hara Running"],
+        "url": "https://huruhararunning.com",
+        "logo": "https://huruhararunning.com/images/logo/huruhara-logo.png",
+        "image": "https://huruhararunning.com/images/og-image.jpg",
+        "description": "Huruhara adalah komunitas lari Indonesia yang aktif, bergerak bersama, bertumbuh bersama.",
+        "sport": "Running",
+        "email": "huruhararunning@gmail.com",
+        "sameAs": [
+            "https://www.instagram.com/____huruhara",
+            "https://www.strava.com/clubs/1145349",
+            "https://www.tiktok.com/@huruhararunningclub"
+        ]
+    }
+    </script>
 
     {{-- Favicon --}}
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
