@@ -6,7 +6,7 @@
 
     {{-- Primary SEO --}}
     <title>Huruhara Running Community — Jakarta</title>
-    <meta name="description" content="Huruhara is an active running community based in Jakarta, Indonesia. Join Huruhara Run — a community of runners who move, grow, and inspire together.">
+    <meta name="description" content="Huruhara is an active running community based in Jakarta, Indonesia. Move together, grow together.">
     <meta name="keywords" content="huruhara, huruhara run, huruhara running, huruhara running community, huru hara, komunitas lari, komunitas lari Indonesia, running community Indonesia">
     <meta name="author" content="Huruhara Running Community">
     <meta name="robots" content="index, follow">
