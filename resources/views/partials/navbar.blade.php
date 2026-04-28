@@ -1,17 +1,18 @@
 <nav
-    x-data="{ scrolled: false, open: false, darkSection: false }"
+    x-data="{ scrolled: false, open: false, nearVideo: false, darkSection: false }"
     x-init="
         const update = () => {
             scrolled = window.scrollY > 60;
             const video = document.getElementById('video');
             if (video) {
                 const r = video.getBoundingClientRect();
+                nearVideo = r.top <= 200 && r.bottom > 0;
                 darkSection = r.top <= 80 && r.bottom > 80;
             }
         };
         window.addEventListener('scroll', update, { passive: true });
     "
-    :class="(scrolled && !darkSection) ? 'bg-white shadow-sm' : 'bg-transparent'"
+    :class="(scrolled && !nearVideo) ? 'bg-white shadow-sm' : 'bg-transparent'"
     :style="darkSection ? 'opacity: 0; pointer-events: none;' : 'opacity: 1;'"
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
 >
