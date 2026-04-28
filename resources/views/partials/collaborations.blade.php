@@ -38,13 +38,13 @@
                 ></div>
 
                 {{-- Logo image --}}
-                <div class="relative z-10 w-full px-6 py-8">
+                <div class="relative z-10 w-full px-8 py-6">
                     <img
                         src="{{ asset('images/collaborations/' . $brand['logo']) }}"
                         alt="{{ $brand['name'] }}"
-                        :class="hovered ? 'grayscale-0 opacity-100 scale-110' : 'grayscale opacity-40 scale-100'"
-                        class="h-14 lg:h-18 w-full object-contain transition-all duration-400 ease-out"
-                        onerror="this.parentElement.innerHTML = '<span class=\'text-gray-300 font-semibold text-sm tracking-widest uppercase text-center block\'>' + '{{ $brand['name'] }}' + '</span>'"
+                        :class="hovered ? 'grayscale-0 opacity-100 scale-105' : 'grayscale opacity-35 scale-100'"
+                        class="h-8 lg:h-10 w-full object-contain transition-all duration-400 ease-out"
+                        onerror="this.parentElement.innerHTML = '<span class=\'text-gray-300 font-semibold text-xs tracking-widest uppercase text-center block\'>' + '{{ $brand['name'] }}' + '</span>'"
                     >
                 </div>
             </div>
