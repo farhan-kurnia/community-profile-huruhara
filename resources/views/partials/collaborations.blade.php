@@ -26,7 +26,7 @@
                 x-data="{ visible: false }"
                 x-intersect.once="visible = true"
                 :class="visible ? 'opacity-100' : 'opacity-0'"
-                :style="'transition: opacity 0.6s ease; transition-delay: ' + ({{ $index }} * 150) + 'ms'"
+                :style="'transition: opacity 1s ease; transition-delay: ' + ({{ $index }} * 300) + 'ms'"
                 class="flex items-center justify-center px-6 py-8"
             >
                 <img
