@@ -20,14 +20,14 @@
         </div>
 
         {{-- Brand logos: 4 x 2 --}}
-        <div class="grid grid-cols-4 border border-gray-100 divide-x divide-y divide-gray-100 mb-24">
+        <div class="mb-24" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
             @foreach($brands as $index => $brand)
             <div
                 x-data="{ visible: false }"
                 x-intersect.once="visible = true"
                 :class="visible ? 'opacity-100' : 'opacity-0'"
                 :style="'transition: opacity 0.6s ease; transition-delay: ' + ({{ $index }} * 150) + 'ms'"
-                class="flex items-center justify-center px-10 py-10"
+                class="flex items-center justify-center px-6 py-8"
             >
                 <img
                     src="{{ asset('images/collaborations/' . $brand['logo']) }}"
