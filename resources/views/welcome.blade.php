@@ -11,26 +11,23 @@
     <meta name="twitter:card" content="summary_large_image">
     <title>Huruhara Running Community</title>
 
-    {{-- Tailwind CSS CDN with custom config --}}
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-                    },
-                    letterSpacing: {
-                        tightest: '-0.04em',
-                    }
-                }
-            }
-        }
-    </script>
+    {{-- Favicon --}}
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-    {{-- Alpine.js CDN (intersect plugin must load first) --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {{-- Preload critical assets --}}
+    <link rel="preload" href="{{ asset('css/app.css') }}" as="style">
+    <link rel="preload" href="{{ asset('js/alpine-intersect.min.js') }}" as="script">
+    <link rel="preload" href="{{ asset('js/alpine.min.js') }}" as="script">
+
+    {{-- Tailwind CSS (pre-built, minified) --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    {{-- Alpine.js (local, intersect plugin must load first) --}}
+    <script defer src="{{ asset('js/alpine-intersect.min.js') }}"></script>
+    <script defer src="{{ asset('js/alpine.min.js') }}"></script>
 
     <style>
         html { scroll-behavior: smooth; }
