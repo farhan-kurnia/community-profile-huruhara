@@ -33,6 +33,7 @@ class PartnershipController extends Controller
             ['name' => 'Brand 4', 'logo' => 'brand-04.png'],
             ['name' => 'Brand 5', 'logo' => 'brand-05.png'],
             ['name' => 'Brand 6', 'logo' => 'brand-06.png'],
+            ['name' => 'Brand 7', 'logo' => 'brand-07.png'],
         ];
 
         return view('welcome', compact('galleryPhotos', 'videos', 'brands', 'products'));
