@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- Primary SEO --}}
-    <title>Huruhara Running Community — Komunitas Lari Indonesia</title>
-    <meta name="description" content="Huruhara adalah komunitas lari Indonesia yang aktif. Bergabung bersama Huruhara Run, komunitas pelari yang bergerak, bertumbuh, dan menginspirasi bersama.">
+    <title>Huruhara Running Community — Jakarta</title>
+    <meta name="description" content="Huruhara is an active running community based in Jakarta, Indonesia. Join Huruhara Run — a community of runners who move, grow, and inspire together.">
     <meta name="keywords" content="huruhara, huruhara run, huruhara running, huruhara running community, huru hara, komunitas lari, komunitas lari Indonesia, running community Indonesia">
     <meta name="author" content="Huruhara Running Community">
     <meta name="robots" content="index, follow">
@@ -17,16 +17,16 @@
     <meta property="og:url" content="https://huruhararunning.com">
     <meta property="og:site_name" content="Huruhara Running Community">
     <meta property="og:locale" content="id_ID">
-    <meta property="og:title" content="Huruhara Running Community — Komunitas Lari Indonesia">
-    <meta property="og:description" content="Huruhara adalah komunitas lari Indonesia yang aktif. Bergerak bersama, bertumbuh bersama.">
+    <meta property="og:title" content="Huruhara Running Community — Jakarta">
+    <meta property="og:description" content="Huruhara is an active running community based in Jakarta, Indonesia. Move together, grow together.">
     <meta property="og:image" content="https://huruhararunning.com/images/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Huruhara Running Community — Komunitas Lari Indonesia">
-    <meta name="twitter:description" content="Huruhara adalah komunitas lari Indonesia yang aktif. Bergerak bersama, bertumbuh bersama.">
+    <meta name="twitter:title" content="Huruhara Running Community — Jakarta">
+    <meta name="twitter:description" content="Huruhara is an active running community based in Jakarta, Indonesia. Move together, grow together.">
     <meta name="twitter:image" content="https://huruhararunning.com/images/og-image.jpg">
 
     {{-- JSON-LD Structured Data --}}
