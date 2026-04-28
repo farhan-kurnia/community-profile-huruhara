@@ -19,8 +19,12 @@
             </h2>
         </div>
 
-        {{-- Brand logos: 4 x 2 --}}
-        <div class="mb-24" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+        {{-- Brand logos: 2 col mobile, 4 col desktop --}}
+        <style>
+            #brand-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            @media (min-width: 1024px) { #brand-grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; } }
+        </style>
+        <div id="brand-grid" class="mb-24">
             @foreach($brands as $index => $brand)
             <div
                 x-data="{ visible: false }"
@@ -32,7 +36,8 @@
                 <img
                     src="{{ asset('images/collaborations/' . $brand['logo']) }}"
                     alt="{{ $brand['name'] }}"
-                    class="h-12 lg:h-14 w-full object-contain grayscale opacity-50"
+                    class="h-12 lg:h-14 w-full object-contain grayscale opacity-50 border-0 outline-none"
+                    style="box-shadow: none;"
                     onerror="this.parentElement.innerHTML = '<span class=\'text-gray-300 font-semibold text-xs tracking-widest uppercase text-center block\'>' + '{{ $brand['name'] }}' + '</span>'"
                 >
             </div>
