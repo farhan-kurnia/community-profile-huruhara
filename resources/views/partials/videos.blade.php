@@ -1,4 +1,4 @@
-<section id="video" class="relative flex items-end pb-24 lg:pb-40 overflow-hidden" style="min-height: 140vh;">
+<section id="video" class="relative flex items-end pb-24 lg:pb-40 overflow-hidden" style="min-height: 140vh; background: #000; margin-top: -2px; padding-top: 2px;">
 
     {{-- Background video --}}
     <div class="absolute inset-0 z-0">
@@ -13,7 +13,7 @@
             <source src="{{ asset('videos/community-video.mp4') }}" type="video/mp4">
         </video>
 
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/50"></div>
     </div>
 
     {{-- Content --}}
