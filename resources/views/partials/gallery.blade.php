@@ -1,122 +1,117 @@
-<script>
-    window.__galleryPhotos = @json($galleryPhotos);
-</script>
+<section id="gallery" style="position: relative; height: calc({{ count($galleryPhotos) + 1 }} * 100vh);">
 
-<section id="gallery" class="py-24 lg:py-36 bg-gray-50"
-    x-data="{
-        active: null,
-        photos: window.__galleryPhotos,
-        open(index) { this.active = index; document.body.style.overflow = 'hidden'; },
-        close() { this.active = null; document.body.style.overflow = ''; },
-        prev() { this.active = (this.active - 1 + this.photos.length) % this.photos.length; },
-        next() { this.active = (this.active + 1) % this.photos.length; }
-    }"
-    @keydown.escape.window="close()"
-    @keydown.arrow-left.window="if(active !== null) prev()"
-    @keydown.arrow-right.window="if(active !== null) next()"
->
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div style="position: sticky; top: 0; height: 100vh; overflow: hidden;">
 
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12">
-            <h2
-                x-data="{ visible: false }"
-                x-intersect.once="visible = true"
-                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'"
-                class="font-black text-gray-900 uppercase leading-none transition-all duration-700 ease-out"
-                style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 7vw, 5.5rem);"
+        {{-- Photo slides (stacked, fade in/out via JS) --}}
+        @foreach($galleryPhotos as $index => $photo)
+        <div class="gallery-slide"
+             style="position: absolute; inset: 0; z-index: 1; opacity: 0;">
+            @php $objPos = in_array($index, [4, 9]) ? 'center 20%' : ($index === 11 ? 'center 8%' : 'center center'); @endphp
+            <img
+                src="{{ $photo['src'] }}"
+                alt="{{ $photo['alt'] }}"
+                loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: {{ $objPos }};"
+                onerror="this.parentElement.style.background='#1A1A1A'"
             >
-                Our Best<br>Moments
-            </h2>
-            <p
-                x-data="{ visible: false }"
-                x-intersect.once="visible = true"
-                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
-                class="text-gray-500 max-w-xs text-sm mt-4 lg:mt-0 lg:mb-2 transition-all duration-700 ease-out delay-150"
-            >
-                Every run is a story. These are ours.
-            </p>
         </div>
+        @endforeach
 
-        {{-- CSS Masonry Grid --}}
-        <div class="columns-2 lg:columns-3 xl:columns-4 gap-3">
-            @foreach($galleryPhotos as $index => $photo)
-            <div
-                class="break-inside-avoid mb-3 cursor-pointer group relative overflow-hidden"
-                @click="open({{ $index }})"
-            >
-                <img
-                    src="{{ $photo['src'] }}"
-                    alt="{{ $photo['alt'] }}"
-                    class="w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    onerror="this.parentElement.style.background='#E5E7EB'; this.parentElement.style.minHeight='200px'; this.style.display='none'"
-                >
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center">
-                    <svg class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
-                    </svg>
+        {{-- Gradient overlay --}}
+        <div style="position: absolute; inset: 0; z-index: 10; pointer-events: none;
+                    background: linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, transparent 30%, transparent 60%, rgba(0,0,0,0.55) 100%);"></div>
+
+        {{-- UI overlay --}}
+        <div style="position: absolute; inset: 0; z-index: 20; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between;">
+
+            {{-- Top spacer (counter moved to navbar) --}}
+            <div style="height: 1.75rem;"></div>
+
+            {{-- Bottom: large number + title + progress bar --}}
+            <div style="padding: 2rem 2rem 0;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 0.5rem;">
+                    <span id="gallery-big-num"
+                          style="color: rgba(255,255,255,0.12); font-family: Helvetica,Arial,sans-serif; font-size: clamp(4rem, 15vw, 9rem); font-weight: 900; line-height: 1; letter-spacing: -0.04em;">
+                        01
+                    </span>
+                    <span style="color: rgba(255,255,255,0.35); font-family: Helvetica,Arial,sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem;">
+                        Scroll to explore
+                    </span>
+                </div>
+                <p style="color: rgba(255,255,255,0.75); font-family: Helvetica,Arial,sans-serif; font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 0.85rem;">
+                    Our Best Moments
+                </p>
+                {{-- Progress bar --}}
+                <div style="height: 1px; background: rgba(255,255,255,0.12);">
+                    <div id="gallery-progress"
+                         style="height: 100%; background: rgba(255,255,255,0.6); width: 0%; transition: width 0.45s ease;">
+                    </div>
                 </div>
             </div>
-            @endforeach
+
         </div>
-    </div>
 
-    {{-- Lightbox --}}
-    <div
-        x-show="active !== null"
-        x-transition:enter="transition duration-200"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition duration-150"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        class="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center"
-        @click.self="close()"
-    >
-        {{-- Prev button --}}
-        <button
-            @click="prev()"
-            class="absolute left-4 lg:left-8 text-white/70 hover:text-white p-2 transition-colors"
-            aria-label="Previous"
-        >
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-            </svg>
-        </button>
-
-        {{-- Image --}}
-        <img
-            :src="active !== null && photos[active] ? photos[active].src : ''"
-            :alt="active !== null && photos[active] ? photos[active].alt : ''"
-            class="max-h-[85vh] max-w-[80vw] object-contain"
-        >
-
-        {{-- Next button --}}
-        <button
-            @click="next()"
-            class="absolute right-4 lg:right-8 text-white/70 hover:text-white p-2 transition-colors"
-            aria-label="Next"
-        >
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-        </button>
-
-        {{-- Close button --}}
-        <button
-            @click="close()"
-            class="absolute top-4 right-4 text-white/70 hover:text-white p-2 transition-colors"
-            aria-label="Close"
-        >
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-        </button>
-
-        {{-- Counter --}}
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-sm">
-            <span x-text="active !== null ? (active + 1) + ' / ' + photos.length : ''"></span>
-        </div>
     </div>
 
 </section>
+
+<script>
+(function () {
+    var section  = document.getElementById('gallery');
+    var slides   = Array.from(section.querySelectorAll('.gallery-slide'));
+    var counters = Array.from(document.querySelectorAll('.gallery-counter-display'));
+    var bigNum   = document.getElementById('gallery-big-num');
+    var progress = document.getElementById('gallery-progress');
+    var total    = slides.length;
+    var current  = -1;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function fadeTo(idx) {
+        if (idx === current) return;
+
+        var newSlide = slides[idx];
+
+        // Place new slide on top, invisible
+        newSlide.style.transition = 'none';
+        newSlide.style.opacity    = '0';
+        newSlide.style.zIndex     = '3';
+        newSlide.offsetHeight;                       // force reflow
+
+        // Fade new slide in
+        newSlide.style.transition = 'opacity 0.65s ease';
+        newSlide.style.opacity    = '1';
+
+        // Fade old slide out
+        if (current >= 0) {
+            var oldSlide = slides[current];
+            oldSlide.style.transition = 'opacity 0.65s ease';
+            oldSlide.style.opacity    = '0';
+            (function (i) {
+                setTimeout(function () { slides[i].style.zIndex = '1'; }, 700);
+            })(current);
+        }
+
+        current = idx;
+    }
+
+    function update() {
+        var rect       = section.getBoundingClientRect();
+        var scrollable = section.offsetHeight - window.innerHeight;
+        var scrolled   = Math.max(0, Math.min(-rect.top, scrollable));
+        var pct        = scrollable > 0 ? scrolled / scrollable : 0;
+        var idx        = Math.min(Math.floor(pct * total), total - 1);
+
+        fadeTo(idx);
+
+        var label = pad(idx + 1);
+        counters.forEach(function(el) { el.textContent = label + ' / ' + pad(total); });
+        bigNum.textContent = label;
+        progress.style.width = Math.round((idx + 1) / total * 100) + '%';
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+})();
+</script>
