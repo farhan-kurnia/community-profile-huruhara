@@ -80,6 +80,8 @@
 </head>
 <body class="bg-white text-gray-900 antialiased" x-data>
 
+    @include('partials.intro')
+
     @include('partials.navbar')
 
     @include('partials.hero')
