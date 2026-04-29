@@ -1,3 +1,9 @@
+<style>
+    @media (max-width: 1023px) {
+        .gallery-photo-12 { object-position: 20% 8% !important; }
+    }
+</style>
+
 <section id="gallery" style="position: relative; height: calc({{ count($galleryPhotos) + 1 }} * 100vh);">
 
     <div style="position: sticky; top: 0; height: 100vh; overflow: hidden;">
@@ -11,6 +17,7 @@
                 src="{{ $photo['src'] }}"
                 alt="{{ $photo['alt'] }}"
                 loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
+                class="{{ $index === 11 ? 'gallery-photo-12' : '' }}"
                 style="width: 100%; height: 100%; object-fit: cover; object-position: {{ $objPos }};"
                 onerror="this.parentElement.style.background='#1A1A1A'"
             >
