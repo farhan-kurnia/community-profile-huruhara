@@ -11,10 +11,14 @@ class PartnershipController extends Controller
 {
     public function index()
     {
-        $galleryPhotos = collect(range(1, 12))->map(fn($i) => [
-            'src' => asset('images/gallery/photo-' . str_pad($i, 2, '0', STR_PAD_LEFT) . '.jpg'),
-            'alt' => 'Huruhara event photo ' . $i,
-        ])->toArray();
+        $galleryPhotos = collect(range(1, 12))->map(function ($i) {
+            $filename = 'images/gallery/photo-' . str_pad($i, 2, '0', STR_PAD_LEFT) . '.jpg';
+            $mtime    = file_exists(public_path($filename)) ? filemtime(public_path($filename)) : 1;
+            return [
+                'src' => asset($filename) . '?v=' . $mtime,
+                'alt' => 'Huruhara event photo ' . $i,
+            ];
+        })->toArray();
 
         $videos = [
             ['youtube_id' => 'dQw4w9WgXcQ', 'title' => 'Huruhara Run — Event Recap 2024'],
