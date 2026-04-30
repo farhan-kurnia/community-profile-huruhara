@@ -127,7 +127,7 @@
             </svg>
         </button>
 
-        <div class="flex flex-col h-full px-8 pt-28 pb-10">
+        <div class="flex flex-col h-full px-8 pb-10" style="padding-top: 9rem;">
 
             {{-- Nav links (natural height, no flex-1 so spacing stays consistent) --}}
             <div class="flex flex-col">
